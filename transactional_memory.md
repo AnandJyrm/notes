@@ -21,3 +21,12 @@ Under the policy of priority inheritance, whenever a high-priority task has to w
 #### Avoid Blocking
 
 Because priority inversion involves a low-priority task blocking a high-priority task, one way to avoid priority inversion is to avoid blocking, for example by using non-blocking algorithms such as read-copy-update.
+
+## Convoying
+
+Convoying occurs when a process holding a lock is re-scheduled, perhaps by exhausting its scheduling quantum, by a page fault, or by some other kind of interrupt.
+When such an interruption occurs, other processes capable of running may be unable to progress
+
+## Deadlock
+
+Deadlock can occur if processes attempt to lock the same set of objects in different orders, Deadlock avoidance can be awkward if processes must lock multiple data objects, particularly if the set of objects is not known in advance
