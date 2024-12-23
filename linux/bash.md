@@ -1,11 +1,14 @@
  [ ] nice / renice
  [ ] flock
  [ ] SECONDS
+ [ ] RANDOM
+ [ ] strings
  [ ] pushd / popd
  [ ] cut
  [ ] rg
  [ ] fd
-
+ [ ] dd
+ [ ] hexdump
 
 
 ## tee
@@ -24,5 +27,4 @@ This will write content of a.txt to stdout and to b.txt
 
 - `-a` -> append to given file, don't overwrite
 - `-i` -> ignore interrupt signals
-
 

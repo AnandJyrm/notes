@@ -6,4 +6,5 @@ layout: default
 - [tmux](tmux.md) - terminal multiplexer
 - [iso and rpm](iso_rpm.md) - scripts to extract iso and rpms
 - [fork bomb](fork_bomb.md) - Simple Fork bomb 
+- [dev files](dev_files.md) - Special /dev/ files
 
