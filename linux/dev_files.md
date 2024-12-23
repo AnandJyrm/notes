@@ -1,8 +1,11 @@
 ## Useful /dev files
 
+These are device nodes which don't correspond to any physical devices (pseudo-device files)
+
 - /dev/null
 - /dev/zero
 - /dev/urandom
+- /dev/stdin, /dev/stdout, /dev/stderr
 
 ### /dev/null
 accepts and discards all input written to it; provides an end-of-file indication when read from.
