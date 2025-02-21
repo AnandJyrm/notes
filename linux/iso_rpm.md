@@ -1,4 +1,4 @@
-# Tools to unpack and extract from iso content
+# Tools to unpack and extract iso content and make iso
 
 ## view iso directory listing
 ```bash
@@ -17,6 +17,16 @@ function print_size {
 
 # Extract an ISO file to a directory
 function extract_iso() {
+    if ! [[ -f $1 ]] ; then
+        echo "'$1' is not found"
+        exit 1
+    fi
+
+    if ! [[ -d $2 ]] ; then
+        echo "'$2' not found, create an empty output directory first"
+        exit 1
+    fi
+
     local isofile="$1"
     local isodir="$2"
     local size=`print_size "$isofile"`
@@ -62,4 +72,31 @@ rpm -ql <rpm> --provides
 ## extract rpm content:
 ```bash
 rpm2cpio <rpm> | cpio -idv 2> /dev/null
+```
+
+## make iso:
+```bash
+#!/usr/local/bin/bash
+
+function print_size {
+    local size=`du -hs "$1" | cut -f1`
+    printf "%s" "$size"
+}
+
+# create an iso from directory
+function make_iso() {
+    if ! [[ -d $1 ]] ; then
+        echo "'$2' not found. Create the contents first in '$2'"
+        exit 1
+    fi
+
+    local isodir="$1"
+    local isofile="$2"
+
+    printf "Building ISO '%s' from: %s\n" "$isofile" "$isodir"
+    mkisofs -R -uid 0 -gid 0 -quiet -o "$isofile" "$isodir/" || error "Error creating new ISO '$isofile'"
+    printf "  ISO size is %s\n" "`print_size "$isofile"`"
+}
+
+make_iso $1 $2
 ```
